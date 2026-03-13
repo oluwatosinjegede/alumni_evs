@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-xl mx-auto mt-20 bg-white p-8 rounded-xl shadow">
+
+<h2 class="text-2xl font-bold mb-6">
+
+Alumni Election Ballot
+
+</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label class="block mb-3">
+
+<input type="radio" name="candidate" value="Adewale Johnson">
+
+Adewale Johnson
+
+</label>
+
+<label class="block mb-3">
+
+<input type="radio" name="candidate" value="Tunde Balogun">
+
+Tunde Balogun
+
+</label>
+
+<button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded">
+
+Submit Vote
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
