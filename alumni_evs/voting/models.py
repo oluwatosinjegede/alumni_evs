@@ -2,6 +2,19 @@ from django.db import models
 import uuid
 from alumni_evs.voters.models import Voter
 
+
+class Election(models.Model):
+
+    title = models.CharField(max_length=200)
+
+    start_date = models.DateTimeField()
+
+    end_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
+
+
 class VoteToken(models.Model):
 
     voter = models.ForeignKey(Voter,on_delete=models.CASCADE)
