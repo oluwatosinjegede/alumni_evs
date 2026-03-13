@@ -29,3 +29,16 @@ def vote_page(request, token):
 
 def landing_page(request):
     return render(request, "landing.html")
+
+
+
+def latest_votes(request):
+
+    votes = Vote.objects.select_related("voter").order_by("-created_at")[:10]
+
+    data = []
+
+    for v in votes:
+        data.append(v.voter.fullname)
+
+    return JsonResponse({"votes":data})

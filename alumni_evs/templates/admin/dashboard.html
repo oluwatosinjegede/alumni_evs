@@ -1,18 +1,83 @@
-<div class="grid grid-cols-3 gap-6">
+{% extends "admin/base_dashboard.html" %}
 
-<div class="bg-white shadow p-6 rounded">
-<h3>Total Voters</h3>
-<p class="text-3xl">{{ total_voters }}</p>
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-8">
+Election Dashboard
+</h1>
+
+<!-- Stats Cards -->
+
+<div class="grid grid-cols-3 gap-6 mb-10">
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="text-gray-500">Total Voters</h3>
+
+<p class="text-3xl font-bold" id="total_voters">
+{{ total_voters }}
+</p>
+
 </div>
 
-<div class="bg-white shadow p-6 rounded">
-<h3>Votes Cast</h3>
-<p class="text-3xl">{{ votes_cast }}</p>
-</div>
+<div class="bg-white p-6 rounded-xl shadow">
 
-<div class="bg-white shadow p-6 rounded">
-<h3>Turnout</h3>
-<p class="text-3xl">{{ turnout }}%</p>
-</div>
+<h3 class="text-gray-500">Votes Cast</h3>
+
+<p class="text-3xl font-bold" id="votes_cast">
+{{ votes_cast }}
+</p>
 
 </div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="text-gray-500">Turnout</h3>
+
+<p class="text-3xl font-bold" id="turnout">
+{{ turnout }}%
+</p>
+
+</div>
+
+</div>
+
+<!-- Turnout Chart -->
+
+<div class="bg-white p-6 rounded-xl shadow mb-10">
+
+<h3 class="text-lg font-semibold mb-4">
+Turnout Progress
+</h3>
+
+<canvas id="turnoutChart"></canvas>
+
+</div>
+
+<!-- Live Vote Monitor -->
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="text-lg font-semibold mb-4">
+Live Vote Monitor
+</h3>
+
+<ul id="voteList">
+
+{% for vote in latest_votes %}
+
+<li class="border-b py-2">
+
+{{ vote.voter.fullname }} voted
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+
+{% endblock %}
