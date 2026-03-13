@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'voters',
-    'elections',
-    'voting',
-    'notifications'
+    'alumni_evs.voters',
+    'alumni_evs.elections',
+    'alumni_evs.voting',
+    'alumni_evs.notifications',
 ]
 
 MIDDLEWARE = [
