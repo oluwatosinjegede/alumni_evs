@@ -17,12 +17,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from alumni_evs.voting.views import landing_page, vote_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", landing_page, name="home"),
-    path("vote/<uuid:token>/", vote_page, name="vote"),
     path("", include("alumni_evs.voting.urls")),
 ]
-
