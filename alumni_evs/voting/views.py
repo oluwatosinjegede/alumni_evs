@@ -26,3 +26,6 @@ def vote_page(request, token):
         return render(request,"success.html")
 
     return render(request,"ballot.html")
+
+def landing_page(request):
+    return render(request, "landing.html")
