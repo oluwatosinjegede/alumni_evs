@@ -23,6 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", landing_page, name="home"),
     path("vote/<uuid:token>/", vote_page, name="vote"),
-    path("", include("apps.elections.urls")),
+    path("", include("elections.urls")),
 ]
 
