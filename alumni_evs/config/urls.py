@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.urls import path
-from voting.views import vote_page
+from alumni_evs.voting.views import vote_page
 
 urlpatterns = [
 
