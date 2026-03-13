@@ -6,6 +6,8 @@ class VoteToken(models.Model):
 
     voter = models.ForeignKey(Voter,on_delete=models.CASCADE)
 
+    election = models.ForeignKey(Election, on_delete=models.CASCADE)
+
     token = models.UUIDField(default=uuid.uuid4)
 
     used = models.BooleanField(default=False)
@@ -19,4 +21,7 @@ class Vote(models.Model):
 
     candidate = models.CharField(max_length=200)
 
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+
     created_at = models.DateTimeField(auto_now_add=True)
+

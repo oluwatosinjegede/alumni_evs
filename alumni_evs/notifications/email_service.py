@@ -1,6 +1,6 @@
 from django.core.mail import EmailMessage
 
-def send_voting_email(voter, link, qr_path):
+def send_vote_email(voter, link, qr_path):
 
     subject = "Christ's School 1990 Alumni Election"
 
@@ -9,13 +9,14 @@ Dear {voter.fullname},
 
 You are eligible to vote.
 
-Click this link to vote:
+Click the link below:
 
 {link}
 
 Or scan the attached QR code.
 
-You can only vote once.
+Regards
+Election Committee
 """
 
     email = EmailMessage(

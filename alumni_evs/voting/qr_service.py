@@ -1,18 +1,21 @@
 import qrcode
 from .models import VoteToken
 
-BASE_URL = "https://90set2026election.up.railway.app"
+BASE_URL = "https://90set2026election.up.railway.app/"
 
-def generate_qr(voter):
+def generate_qr_for_voter(voter,election):
 
-    token_obj = VoteToken.objects.create(voter=voter)
+    token = VoteToken.objects.create(
+        voter=voter,
+        election=election
+    )
 
-    vote_url = f"{BASE_URL}/vote/{token_obj.token}"
+    url = f"{BASE_URL}/vote/{token.token}"
 
-    qr = qrcode.make(vote_url)
+    img = qrcode.make(url)
 
-    filename = f"media/qr/{token_obj.token}.png"
+    file_path = f"media/qr/{token.token}.png"
 
-    qr.save(filename)
+    img.save(file_path)
 
-    return vote_url, filename
+    return url, file_path
