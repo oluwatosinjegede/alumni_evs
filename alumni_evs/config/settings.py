@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'alumni_evs.config.urls'
 
 TEMPLATES = [
     {
