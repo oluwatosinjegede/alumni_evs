@@ -1,1 +1,1 @@
-web: gunicorn alumni_evs.config.wsgi --bind 0.0.0.0:$PORT
+gunicorn alumni_evs.config.wsgi --bind 0.0.0.0:$PORT
