@@ -1,6 +1,6 @@
-from voters.models import Voter
-from voting.qr_service import generate_qr
-from notifications.email_service import send_voting_email
+from alumni_evs.voters.models import Voter
+from alumni_evs.voting.qr_service import generate_qr
+from alumni_evs.notifications.email_service import send_voting_email
 
 def run():
 

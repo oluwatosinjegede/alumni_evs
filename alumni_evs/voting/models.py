@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-from voters.models import Voter
+from alumni_evs.voters.models import Voter
 
 class VoteToken(models.Model):
 
