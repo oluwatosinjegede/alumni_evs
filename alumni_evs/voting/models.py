@@ -1,6 +1,5 @@
 from django.db import models
 import uuid
-from alumni_evs.voters.models import Voter
 
 
 class Election(models.Model):
@@ -15,26 +14,45 @@ class Election(models.Model):
         return self.title
 
 
+class Position(models.Model):
+
+    name = models.CharField(max_length=200)
+
+    election = models.ForeignKey("Election", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Candidate(models.Model):
+
+    name = models.CharField(max_length=200)
+
+    position = models.ForeignKey("Position", on_delete=models.CASCADE)
+
+    photo = models.ImageField(upload_to="candidates/")
+
+    votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+
 class VoteToken(models.Model):
 
-    voter = models.ForeignKey(Voter,on_delete=models.CASCADE)
+    token = models.UUIDField(default=uuid.uuid4, unique=True)
 
-    election = models.ForeignKey(Election, on_delete=models.CASCADE)
-
-    token = models.UUIDField(default=uuid.uuid4)
+    election = models.ForeignKey("Election", on_delete=models.CASCADE)
 
     used = models.BooleanField(default=False)
-
-    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Vote(models.Model):
 
-    voter = models.ForeignKey(Voter,on_delete=models.CASCADE)
+    token = models.ForeignKey("VoteToken", on_delete=models.CASCADE)
 
-    candidate = models.CharField(max_length=200)
+    candidate = models.ForeignKey("Candidate", on_delete=models.CASCADE)
 
-    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    position = models.ForeignKey("Position", on_delete=models.CASCADE)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-
+    created = models.DateTimeField(auto_now_add=True)
